@@ -1,6 +1,9 @@
 #include "iostream"
 
+using namespace std;
+
 int main() {
-    std:: cout<<"Hello World! C++!";
+    cout << "Hello World! C++!";
+    cout << "I am using namespace!";
     return 0;
 }
