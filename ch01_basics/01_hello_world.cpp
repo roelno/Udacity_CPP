@@ -1,4 +1,6 @@
 #include "iostream"
+// " " is in our local directory
+// < > is in the standard directory
 
 using namespace std;
 
