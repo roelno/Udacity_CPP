@@ -20,9 +20,9 @@ class Student
         void print();
 };
 
-void Student::setName(string nameIn)
+void Student::setName(string name)
 {
-     name = nameIn;
+     this->name = name;
 }
 
 void Student::setId(int idIn)
