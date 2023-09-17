@@ -2,7 +2,6 @@
 */ 
 
 #include<iostream>
-#include <mutex>
 #include<string>
 using namespace std;
 
@@ -17,7 +16,8 @@ class Employee
     public:
         void setPayRate(float rateIn);
         float getPayRate();
-        float calcWeeklyPay();
+        //This is now a virtual function
+        virtual float calcWeeklyPay(); 
 };
 void Employee::setPayRate(float rateIn)
 {
@@ -49,47 +49,11 @@ float Manager::calcWeeklyPay()
 }
 
 
-
-// int main()
-// {
-//     Employee e1;
-//     e1.setPayRate(10.00);
-//     Manager m1;
-//     m1.setPayRate(12000.00);
-//     cout<<"e1 pay: $"<<e1.calcWeeklyPay();
-//     cout<<"\nm1 pay: $"<<m1.calcWeeklyPay();
-
-//     return 0;
-// }
-
-// int main()
-// {
-//     const string status = "salary";
-//     string level;
-//     level = "hourly";
-    
-//     if(status != level)
-//     {
-//         Employee e1;
-//         e1.setPayRate(10.00);
-//         cout<<"e1 pay: $"<<e1.calcWeeklyPay();
-//     }
-//     else
-//     {
-//         Manager e1;
-//         e1.setPayRate(12000.00);
-//         cout<<"e1 pay: $"<<e1.calcWeeklyPay();
-//     }    
-
-
-//     return 0;
-// }
-
 int main()
 {
     const string status = "salary"; //options: hourly or salary
     string level;
-    level = "hourly";
+    level = "salary";
     Employee *e1; //e1 is now a pointer to Employee object
     
     if(status != level)
@@ -102,20 +66,8 @@ int main()
     }  
     
     e1->setPayRate(12000.00);
-    cout<<"This doesn't work. We get the wrong pay.\n";
+    cout<<"It works!\n";
     cout<<"e1 pay: $"<<e1->calcWeeklyPay();
-    cout<<"\nThe pay is calculated as an hourly employee.";
-    delete e1; //every 'new' must have a delete
+    delete e1;
     return 0;
 }
-
-/*
-Let's think about what we are doing here. We assign an Employee pointer 
-at the start of the program. This allocates memory to an Employee object.
-Then later, we define that same memory location as a manager. This should
-now supersede the previous definition, but it doesn't.
-
-Another way to say this is:
-
-The term e1 is statically bound during compile. 
-We want it to be dynamically bound during execution. */
